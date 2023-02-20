@@ -4,6 +4,9 @@ class ProductManager {
   }
 
   addProduct(product) {
+    product.id = this.products.length + 1;
+    this.products.push(product);
+    
     if (this.products.find((p) => p.code === product.code)) {
       console.log("El producto ya existe");
       return;
@@ -20,8 +23,7 @@ class ProductManager {
       console.log("Faltan datos");
       return;
     }
-    product.id = this.products.length + 1;
-    this.products.push(product);
+
   }
 
   getProducts() {
@@ -31,7 +33,7 @@ class ProductManager {
   getProductById(id) {
     const product = this.products.find((p) => p.id === id);
     if (!product) {
-      console.log("No se encontro producto");
+      console.log("Not found");
       return;
     }
     return product;
